@@ -1,0 +1,14 @@
+<books>
+    <book>
+        <id>123456</id>
+        <author>Buzz Michelangelo</author>
+        <title>The Story Of Buzz Michelangelo</title>
+        <published>2019</published>
+    </book>
+    <book>
+        <id>456789</id>
+        <author>Moxie Crimefighter</author>
+        <title>How To Fight Crimes</title>
+        <published>2005</published>
+    </book>
+</books>
