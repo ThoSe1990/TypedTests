@@ -11,6 +11,7 @@
 
 class book_reader_factory {
 public:
+    [[nodiscard]]
     static std::unique_ptr<book_reader> create(const std::string& configuration_file) {
         
         auto extension = std::filesystem::path(configuration_file).extension();

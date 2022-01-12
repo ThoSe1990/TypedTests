@@ -4,12 +4,12 @@
     },
     "configurations": [
       {
-        "name": "Mac",
-        "intelliSenseMode": "clang-x64",
+        "name": "Win",
+        "intelliSenseMode": "gcc-x64",
         "includePath": ["${myDefaultIncludePath}"],
         "defines": [],
         "forcedInclude": [],
-        "compilerPath": "/usr/bin/gcc",
+        "compilerPath": "C:\\msys64\\mingw64\\bin\\g++.exe",
         "cStandard": "c11",
         "cppStandard": "c++17",
         "browse": {

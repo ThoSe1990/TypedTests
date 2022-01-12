@@ -7,6 +7,12 @@ struct Book {
     std::string author;
     std::string title;
     int published;
+
+    bool operator==(const Book& rhs) {
+        return  this->author.compare(rhs.author) == 0 &&
+                this->title.compare(rhs.title) == 0 &&
+                this->published == rhs.published;
+    }
 };
 
 
@@ -26,9 +32,11 @@ public:
 
     virtual void add_books() = 0;
 
+    [[nodiscard]]
     Book get_book(const std::size_t id) const {
         return books.at(id);
     } 
+
 };
 
 
