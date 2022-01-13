@@ -24,5 +24,11 @@ int main ()
     std::cout << b2.title << "\n";
     std::cout << b2.published << "\n";
 
+    auto books = json->get_books();
+
+    std::cout << books[456789].author << "\n";
+    std::cout << books[456789].title << "\n";
+    std::cout << books[456789].published << "\n";
+
     return 0;
 }
