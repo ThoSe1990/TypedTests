@@ -36,7 +36,7 @@ public:
         return books.at(id);
     } 
 
-    [[nodiscard]] auto get_books() {
+    [[nodiscard]] const auto get_books() const noexcept {
         return books;
     }
 };
