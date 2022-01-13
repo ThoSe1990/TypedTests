@@ -22,8 +22,8 @@ steps:
     mkdir build
     cd build 
     sudo conan install .. --build missing
-    cmake -S ./.. -B ./
-    cmake --build ./
-    ctest -VV
+    sudo cmake -S ./.. -B ./
+    sudo cmake --build ./
+    sudo ctest -VV
 
   displayName: 'build and run'
