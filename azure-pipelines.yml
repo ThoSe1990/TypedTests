@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+steps:
+- script: | 
+    sudo apt-get update
+    sudo apt-get install build-essential
+    sudo apt-get install libboost-all-dev
+    apt-get install python-dev
+    sudo apt install python3.8
+    pip install conan
+    mkdir build
+    cd build 
+    conan install .. --build missing
+    cmake -S ./.. -B ./
+    cmake --build ./
+    ctest -VV
+
+  displayName: 'build and run'
