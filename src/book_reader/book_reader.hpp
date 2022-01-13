@@ -36,7 +36,7 @@ public:
         return books.at(id);
     } 
 
-    [[nodiscard]] auto get_books_map() {
+    [[nodiscard]] auto get_books() {
         return books;
     }
 };
