@@ -32,11 +32,13 @@ public:
 
     virtual void add_books() = 0;
 
-    [[nodiscard]]
-    Book get_book(const std::size_t id) const {
+    [[nodiscard]] Book get_book(const std::size_t id) const {
         return books.at(id);
     } 
 
+    [[nodiscard]] auto get_books() {
+        return books;
+    }
 };
 
 
