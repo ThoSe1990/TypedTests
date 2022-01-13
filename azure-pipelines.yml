@@ -15,7 +15,7 @@ steps:
     sudo apt-get install libboost-all-dev
     apt-get install python-dev
     sudo apt install python3.8
-    pip install conan
+    sudo pip install conan
     sudo conan profile show default
     sudo conan profile update settings.compiler.libcxx=libstdc++11 default
     sudo conan profile show default
