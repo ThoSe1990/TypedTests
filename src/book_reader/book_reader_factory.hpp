@@ -11,10 +11,10 @@
 
 class book_reader_factory {
 public:
-    [[nodiscard]]
-    static std::unique_ptr<book_reader> create(const std::string& configuration_file) {
+    
+    [[nodiscard]] static std::unique_ptr<book_reader> create(const std::string& configuration_file) {
         
-        auto extension = std::filesystem::path(configuration_file).extension();
+        const auto extension = std::filesystem::path(configuration_file).extension();
 
         if (extension.compare(".xml") == 0) {
             return std::make_unique<xml_book_reader>(configuration_file);
