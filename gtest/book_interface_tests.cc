@@ -3,9 +3,11 @@
 #include <gtest/gtest.h>
 
 #include "book_test_variables.hpp"
-#include "book_reader/book_reader_factory.hpp"
+#include "book_reader/book_reader.hpp"
+#include "book_reader/xml_reader.hpp"
+#include "book_reader/json_reader.hpp"
 
-class book_reader_interface_tests : public testing::TestWithParam<std::string> {
+class book_reader_interface_tests : public testing::TestWithParam<book_reader> {
 protected:
     void SetUp() override {    
         this->books = GetParam();
