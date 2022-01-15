@@ -8,11 +8,8 @@
 class book_reader_interface_tests : public testing::TestWithParam<std::string> {
 protected:
     void SetUp() override {    
-        const auto current_file = GetParam();
-        this->books = book_reader_factory::create(current_file);
+        this->books = GetParam();
         this->books->add_books();
-
-        std::cout << "running test with: " << current_file << "\n\n";
     }
     void TearDown() override {
         this->books.reset();
@@ -26,8 +23,8 @@ INSTANTIATE_TEST_SUITE_P(
         book_reader_interface_tests,
         book_reader_interface_tests,
         ::testing::Values(
-            book_tests::xml_file,
-            book_tests::json_file
+            std::make_unique<xml_reader>(book_tests::xml_file),
+            std::make_unique<json_reader>(book_tests::json_file)
         )
 );
 
