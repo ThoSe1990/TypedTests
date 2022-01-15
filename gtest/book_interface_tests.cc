@@ -7,7 +7,7 @@
 #include "book_reader/xml_reader.hpp"
 #include "book_reader/json_reader.hpp"
 
-class book_reader_interface_tests : public testing::TestWithParam<book_reader> {
+class book_reader_interface_tests : public testing::TestWithParam<std::unique_ptr<book_reader>> {
 protected:
     void SetUp() override {    
         this->books = GetParam();
