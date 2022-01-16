@@ -16,10 +16,16 @@ class json_book_reader : public book_reader {
 private:
     boost::property_tree::ptree pt;
 public: 
+    json_book_reader() = delete;
+    json_book_reader(const json_book_reader&) = default;
+    json_book_reader(json_book_reader&&) = default;
+    json_book_reader& operator=(const json_book_reader&) = default;
+    json_book_reader& operator=(json_book_reader&&) = default;
+
     json_book_reader(const std::string& file) {
         boost::property_tree::read_json(file, pt);
     }
-    
+
     void add_books() override {
         BOOST_FOREACH(boost::property_tree::ptree::value_type &v, pt.get_child("books")) {
 

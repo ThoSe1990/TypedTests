@@ -26,7 +26,7 @@ public:
     book_reader& operator=(const book_reader&) = default;
     book_reader& operator=(book_reader&&) = default;
     virtual ~book_reader() = default;
-
+    
     virtual void add_books() = 0;
 
     [[nodiscard]] Book get_book(const std::size_t id) const {

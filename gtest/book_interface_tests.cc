@@ -3,35 +3,51 @@
 #include <gtest/gtest.h>
 
 #include "book_test_variables.hpp"
-#include "book_reader/book_reader.hpp"
+
 #include "book_reader/xml_reader.hpp"
 #include "book_reader/json_reader.hpp"
 
-class book_reader_interface_tests : public testing::TestWithParam<std::unique_ptr<book_reader>> {
+
+
+template <class T>
+std::unique_ptr<book_reader> create_book_reader();
+
+template <>
+std::unique_ptr<book_reader> create_book_reader<xml_book_reader>() {
+  return std::make_unique<xml_book_reader>(book_tests::xml_file);
+}
+template <>
+std::unique_ptr<book_reader> create_book_reader<json_book_reader>() {
+  return std::make_unique<json_book_reader>(book_tests::json_file);
+}
+
+
+template <class T>
+class book_reader_tests : public testing::Test {
 protected:
-    void SetUp() override {    
-        this->books = GetParam();
-        this->books->add_books();
-    }
-    void TearDown() override {
-        this->books.reset();
+    book_reader_tests() : books(create_book_reader<T>()) {}
+
+    void SetUp() override {
+        books->add_books();
     }
 
-public:
+    void TearDown() override {
+        books.reset();
+    }
+
     std::unique_ptr<book_reader> books;
 };
 
-INSTANTIATE_TEST_SUITE_P(
-        book_reader_interface_tests,
-        book_reader_interface_tests,
-        ::testing::Values(
-            std::make_unique<xml_reader>(book_tests::xml_file),
-            std::make_unique<json_reader>(book_tests::json_file)
-        )
-);
+using testing::Types;
 
-TEST_P(book_reader_interface_tests, verify_books) {
+typedef Types<xml_book_reader, json_book_reader> Implementations;
 
+TYPED_TEST_SUITE(book_reader_tests, Implementations);
+
+
+
+
+TYPED_TEST(book_reader_tests, find_all_books) {
     const auto books_container = this->books->get_books();
 
     for (const auto& expected : book_tests::expected_books) {

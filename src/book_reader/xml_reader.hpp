@@ -13,6 +13,12 @@ class xml_book_reader : public book_reader {
 private:
     boost::property_tree::ptree pt;
 public: 
+    xml_book_reader() = delete;
+    xml_book_reader(const xml_book_reader&) = default;
+    xml_book_reader(xml_book_reader&&) = default;
+    xml_book_reader& operator=(const xml_book_reader&) = default;
+    xml_book_reader& operator=(xml_book_reader&&) = default;
+
     xml_book_reader(const std::string& file) {
         boost::property_tree::read_xml(file, pt);
     }
