@@ -2,4 +2,4 @@
 
 # Parameterized Tests With Googletest
 
-This project belongs to my blog article about parameterized tests with Googletest. For more information see the corresponding [blog post](https://www.codingwiththomas.com/blog/parameterized-tests-with-googletest)
+This project belongs to my blog article about parameterized tests with Googletest. For more information see the corresponding [blog post](https://www.codingwiththomas.com/blog/typed-tests-for-interfaces-with-googletest)
